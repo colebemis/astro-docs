@@ -1,0 +1,39 @@
+[
+  {
+    "title": "Guides",
+    "children": [
+      {
+        "title": "Getting started",
+        "href": "/product/guides/getting-started"
+      },
+      {
+        "title": "Contributing",
+        "href": "/product/guides/contributing"
+      }
+    ]
+  },
+  {
+    "title": "Foundations",
+    "children": [
+      {
+        "title": "Color",
+        "href": "/product/foundations/color"
+      }
+    ]
+  },
+  {
+    "title": "UI patterns"
+  },
+  {
+    "title": "Components",
+    "children": [
+      {
+        "title": "Button",
+        "href": "/product/components/button"
+      }
+    ]
+  },
+  {
+    "title": "Native platform"
+  }
+]

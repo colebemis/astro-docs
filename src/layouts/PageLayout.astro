@@ -1,0 +1,10 @@
+---
+import RootLayout from './RootLayout.astro'
+
+const {title} = Astro.props.frontmatter
+---
+
+<RootLayout {...Astro.props}>
+  <h1>{title}</h1>
+  <slot />
+</RootLayout>
