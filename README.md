@@ -10,7 +10,7 @@
 - [x] Deploy to GitHub pages
 - [x] Fetch component metadata from GitHub repositories
 - [ ] Images
-- [ ] Styles
+- [ ] Style with Primer React
 - [ ] Custom documentation components
   - [x] Note
   - [ ] Do/Dont
