@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     mdx({
       // TODO: Replace with correct values
-      site: 'https://colebemis.github.io',
+      site: 'https://colebemis.com',
       base: '/astro-docs',
       remarkPlugins: [remarkRawContent]
     })
