@@ -35,10 +35,15 @@
       {
         "title": "Button",
         "url": "/product/components/button"
+      },
+      {
+        "title": "TreeView",
+        "url": "/product/components/tree-view"
       }
     ]
   },
   {
-    "title": "Native platform"
+    "title": "Native platforms",
+    "children": []
   }
 ]
