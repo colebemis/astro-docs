@@ -1,7 +1,7 @@
 ---
 import RootLayout from './RootLayout.astro'
 
-const {title} = Astro.props.frontmatter
+const {title} = Astro.props.frontmatter || Astro.props
 ---
 
 <RootLayout {...Astro.props}>

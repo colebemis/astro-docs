@@ -1,9 +1,11 @@
 ---
-title: Button
-# description: TODO
 layout: ~/layouts/ComponentLayout.astro
 ---
 
-## Anatomy
+## Examples
+
+TODO
+
+## Props
 
 TODO

@@ -4,11 +4,11 @@
     "children": [
       {
         "title": "Getting started",
-        "href": "/product/guides/getting-started"
+        "url": "/product/guides/getting-started"
       },
       {
         "title": "Contributing",
-        "href": "/product/guides/contributing"
+        "url": "/product/guides/contributing"
       }
     ]
   },
@@ -17,7 +17,7 @@
     "children": [
       {
         "title": "Color",
-        "href": "/product/foundations/color"
+        "url": "/product/foundations/color"
       }
     ]
   },
@@ -28,8 +28,12 @@
     "title": "Components",
     "children": [
       {
+        "title": "Avatar",
+        "url": "/product/components/avatar"
+      },
+      {
         "title": "Button",
-        "href": "/product/components/button"
+        "url": "/product/components/button"
       }
     ]
   },

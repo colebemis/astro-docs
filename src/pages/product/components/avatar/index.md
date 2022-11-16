@@ -1,9 +1,6 @@
 ---
-title: Button
-# description: TODO
+title: Avatar
 layout: ~/layouts/ComponentLayout.astro
 ---
-
-## Anatomy
 
 TODO

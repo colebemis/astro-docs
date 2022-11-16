@@ -14,15 +14,15 @@ export function Nav({}) {
 
 type NavItem = {
   title: string
-  href?: string
+  url?: string
   children?: NavItem[]
 }
 
-function NavItem({title, href, children}: NavItem) {
+function NavItem({title, url, children}: NavItem) {
   if (!children) {
     return (
       <li>
-        <a href={href}>{title}</a>
+        <a href={url}>{title}</a>
       </li>
     )
   }
