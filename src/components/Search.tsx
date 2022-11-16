@@ -23,6 +23,7 @@ export function Search({pages}: {pages: Page[]}) {
   // Update search results when query changes
   React.useEffect(() => {
     React.startTransition(() => {
+      // TODO: Search in a web worker to avoid blocking the main thread
       setResults(searcher.search(query))
     })
   }, [query, searcher])
