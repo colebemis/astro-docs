@@ -10,6 +10,9 @@ const pages = (await Astro.glob('../pages/**/*'))
       return null
     }
 
+    // TODO: Include path information so we can display breadcrumbs
+    // TODO: Handle component subpages (e.g. /components/button/react)
+
     return {
       title: String(page.frontmatter.title),
       rawContent: String(page.frontmatter.rawContent),
