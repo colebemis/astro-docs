@@ -1,7 +1,22 @@
 ---
 import {Nav} from '~/components/Nav'
+import {Search} from '~/components/Search'
 
 const {title} = Astro.props.frontmatter || Astro.props
+
+const pages = (await Astro.glob('../pages/**/*'))
+  .map(page => {
+    if (!page.frontmatter || !page.frontmatter.title || !page.frontmatter.rawContent) {
+      return null
+    }
+
+    return {
+      title: String(page.frontmatter.title),
+      rawContent: String(page.frontmatter.rawContent),
+      url: String(page.url)
+    }
+  })
+  .filter(Boolean) as Array<{title: string; rawContent: string; url: string}>
 ---
 
 <!DOCTYPE html>
@@ -11,10 +26,13 @@ const {title} = Astro.props.frontmatter || Astro.props
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | Primer</title>
+    <title>{title ? `${title} | Primer` : 'Primer'}</title>
   </head>
   <body>
-    <header>Primer Design System</header>
+    <header>
+      <span>Primer Design System</span>
+      <Search client:idle pages={pages} />
+    </header>
     <Nav />
     <slot />
   </body>
