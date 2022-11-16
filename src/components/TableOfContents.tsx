@@ -1,3 +1,5 @@
+import {Link} from './Link'
+
 type Heading = {
   depth: number
   slug: string
@@ -14,7 +16,7 @@ export function TableOfContents({headings}: {headings: Heading[]}) {
       <ul>
         {h2s.map(heading => (
           <li>
-            <a href={`#${heading.slug}`}>{heading.text}</a>
+            <Link href={`#${heading.slug}`}>{heading.text}</Link>
           </li>
         ))}
       </ul>

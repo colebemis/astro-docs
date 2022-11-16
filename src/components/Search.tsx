@@ -1,5 +1,6 @@
 import React from 'react'
 import {Searcher} from 'fast-fuzzy'
+import {Link} from './Link'
 
 type Page = {
   title: string
@@ -14,7 +15,6 @@ export function Search({pages}: {pages: Page[]}) {
 
   // Create search index
   const searcher = React.useMemo(() => {
-    console.log('creating searcher')
     return new Searcher(pages, {
       keySelector: page => [page.title, page.rawContent]
     })
@@ -57,7 +57,7 @@ export function Search({pages}: {pages: Page[]}) {
             <ul style={{padding: 0, margin: 0, listStyle: 'none'}}>
               {results.map(page => (
                 <li>
-                  <a href={page.url}>{page.title}</a>
+                  <Link href={page.url}>{page.title}</Link>
                 </li>
               ))}
             </ul>

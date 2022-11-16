@@ -1,5 +1,6 @@
 ---
 import {sentenceCase} from 'sentence-case'
+import {Link} from '~/components/Link'
 import {TableOfContents} from '~/components/TableOfContents'
 import RootLayout from './RootLayout.astro'
 
@@ -43,9 +44,9 @@ const navItems = [indexPage, ...siblingPages].map(page => {
         <ul>
           {navItems.map(item => (
             <li>
-              <a href={item.url} aria-current={item.url === currentPage?.url}>
+              <Link href={item.url} aria-current={item.url === currentPage?.url}>
                 {item.title}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

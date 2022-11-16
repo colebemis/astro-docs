@@ -1,11 +1,12 @@
 import navItems from '~/nav.json'
+import {Link} from './Link'
 
-export function Nav({}) {
+export function Nav() {
   return (
     <nav>
       <ul>
         {navItems.map(item => (
-          <NavItem {...item} />
+          <NavItem key={item.title} {...item} />
         ))}
       </ul>
     </nav>
@@ -20,9 +21,10 @@ type NavItem = {
 
 function NavItem({title, url, children}: NavItem) {
   if (!children) {
+    console.log(title, url, children)
     return (
       <li>
-        <a href={url}>{title}</a>
+        <Link href={url}>{title}</Link>
       </li>
     )
   }
@@ -32,7 +34,7 @@ function NavItem({title, url, children}: NavItem) {
       <span>{title}</span>
       <ul>
         {children.map(child => (
-          <NavItem {...child} />
+          <NavItem key={child.url || child.title} {...child} />
         ))}
       </ul>
     </li>
