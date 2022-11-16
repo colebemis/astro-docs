@@ -3,12 +3,12 @@ import react from '@astrojs/react'
 import mdx from '@astrojs/mdx'
 
 export default defineConfig({
+  // TODO: Replace `site` and `base` with correct values
+  site: 'https://colebemis.com',
+  base: '/astro-docs',
   integrations: [
     react(),
     mdx({
-      // TODO: Replace with correct values
-      site: 'https://colebemis.com',
-      base: '/astro-docs',
       remarkPlugins: [remarkRawContent]
     })
   ]
