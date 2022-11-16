@@ -1,0 +1,103 @@
+---
+import ComponentLayout from './ComponentLayout.astro'
+
+type Data = {
+  status: string
+  components: Array<{
+    displayName: string
+    // TODO: Add support for passthrough props
+    props: Array<{
+      name: string
+      required?: boolean
+      deprecated?: boolean
+      // TODO: Add support for complex types
+      type: string
+      defaultValue?: string
+      description?: string
+    }>
+  }>
+}
+
+// TODO: Fetch data from GitHub repository
+const data: Data = {
+  status: 'alpha',
+  components: [
+    {
+      displayName: 'TreeView',
+      props: [
+        {
+          name: 'children',
+          required: true,
+          type: 'React.ReactNode'
+        }
+      ]
+    },
+    {
+      displayName: 'TreeView.Item',
+      props: [
+        {
+          name: 'children',
+          required: true,
+          type: 'React.ReactNode'
+        },
+        {
+          name: 'current',
+          type: 'boolean',
+          defaultValue: 'false',
+          description:
+            'Indicates whether the item is the current item. No more than one item can be current. The path to the current item will be expanded by default.'
+        }
+      ]
+    },
+    {
+      displayName: 'TreeView.SubTree',
+      props: [
+        {
+          name: 'children',
+          type: 'React.ReactNode'
+        }
+      ]
+    }
+  ]
+}
+
+const additionalHeadings = [
+  {text: 'Examples', depth: 2, slug: 'examples'},
+  {text: 'Props', depth: 2, slug: 'props'}
+]
+---
+
+<ComponentLayout headings={Astro.props.headings.concat(additionalHeadings)}>
+  <slot />
+  <h2 id="examples">Examples</h2>
+  <h2 id="props">Props</h2>
+  {
+    data.components.map(component => (
+      <>
+        {/* TODO: Add id to heading */}
+        <h3>{component.displayName}</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {component.props.map(prop => (
+              <tr>
+                <td>{prop.name}</td>
+                <td>{prop.type}</td>
+                <td>{prop.defaultValue}</td>
+                {/* TODO: Support Markdown in descriptions */}
+                <td>{prop.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    ))
+  }
+</ComponentLayout>
