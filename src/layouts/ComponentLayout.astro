@@ -3,6 +3,8 @@ import {sentenceCase} from 'sentence-case'
 import {TableOfContents} from '~/components/TableOfContents'
 import RootLayout from './RootLayout.astro'
 
+// TODO: Improve type-safety
+
 const parentPathRegex = /^.*\/components\/[^\/]*/
 
 const [parentPath] = Astro.url.pathname.match(parentPathRegex) ?? []
@@ -19,7 +21,7 @@ const siblingPages = pages.filter(page => page.url.startsWith(parentPath) && pag
 
 const {title, description} = indexPage?.frontmatter ?? {}
 
-const headings = await currentPage?.getHeadings()
+const headings = (await currentPage?.getHeadings()) ?? []
 
 const navItems = [indexPage, ...siblingPages].map(page => {
   const [filename] = page?.file.split('/').pop().split('.')
