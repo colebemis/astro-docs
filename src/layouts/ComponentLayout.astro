@@ -4,6 +4,14 @@ import {Link} from '~/components/Link'
 import {TableOfContents} from '~/components/TableOfContents'
 import RootLayout from './RootLayout.astro'
 
+type Props = {
+  headings?: Array<{
+    depth: number
+    slug: string
+    text: string
+  }>
+}
+
 // TODO: Improve type-safety
 
 const parentPathRegex = /^.*\/components\/[^\/]*/
@@ -22,7 +30,7 @@ const siblingPages = pages.filter(page => page.url.startsWith(parentPath) && pag
 
 const {title, description} = indexPage?.frontmatter ?? {}
 
-const headings = (await currentPage?.getHeadings()) ?? []
+const headings = Astro.props.headings ?? currentPage?.headings ?? []
 
 const navItems = [indexPage, ...siblingPages].map(page => {
   const [filename] = page?.file.split('/').pop().split('.')
