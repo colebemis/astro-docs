@@ -29,6 +29,10 @@
     "title": "Components",
     "children": [
       {
+        "title": "ActionList",
+        "url": "/product/components/action-list"
+      },
+      {
         "title": "Avatar",
         "url": "/product/components/avatar"
       },
