@@ -1,10 +1,11 @@
 ---
 import {sentenceCase} from 'sentence-case'
+import {TableOfContents} from '~/components/TableOfContents'
 import RootLayout from './RootLayout.astro'
 
 const parentPathRegex = /^.*\/components\/[^\/]*/
 
-const [parentPath] = Astro.url.pathname.match(parentPathRegex)
+const [parentPath] = Astro.url.pathname.match(parentPathRegex) ?? []
 
 // TODO: Handle case where parentPath is falsy
 
@@ -12,29 +13,35 @@ const pages = await Astro.glob('../pages/**/*')
 
 const indexPage = pages.find(page => page.url === parentPath)
 
+const currentPage = pages.find(page => page.url === Astro.url.pathname)
+
 const siblingPages = pages.filter(page => page.url.startsWith(parentPath) && page.url !== parentPath)
 
-const {title, description} = indexPage?.frontmatter || {}
+const {title, description} = indexPage?.frontmatter ?? {}
+
+const headings = await currentPage?.getHeadings()
 
 const navItems = [indexPage, ...siblingPages].map(page => {
-  const [filename] = page.file.split('/').pop().split('.')
+  const [filename] = page?.file.split('/').pop().split('.')
   return {
     title: filename === 'index' ? 'Overview' : sentenceCase(filename),
-    url: page.url
+    url: page?.url
   }
 })
 ---
 
 <RootLayout {...indexPage}>
   <h1>{title}</h1>
+
   {description ? <p>{description}</p> : null}
+
   {
     navItems.length > 1 ? (
       <nav>
         <ul>
           {navItems.map(item => (
             <li>
-              <a href={item.url} aria-current={item.url === Astro.url.pathname}>
+              <a href={item.url} aria-current={item.url === currentPage?.url}>
                 {item.title}
               </a>
             </li>
@@ -43,5 +50,8 @@ const navItems = [indexPage, ...siblingPages].map(page => {
       </nav>
     ) : null
   }
+
+  {headings.length > 0 ? <TableOfContents headings={headings} /> : null}
+
   <slot />
 </RootLayout>
