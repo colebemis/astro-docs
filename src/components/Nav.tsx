@@ -21,7 +21,6 @@ type NavItem = {
 
 function NavItem({title, url, children}: NavItem) {
   if (!children) {
-    console.log(title, url, children)
     return (
       <li>
         <Link href={url}>{title}</Link>
