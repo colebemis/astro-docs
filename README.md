@@ -10,7 +10,7 @@
 - [x] Deploy to GitHub pages
 - [x] Fetch component metadata from GitHub repositories
 - [ ] Images
-- [ ] Style with Primer React
+- [ ] Style with Primer React — ⚠ Blocked on [CSS-in-JS support](https://github.com/withastro/astro/issues/4432)
 - [ ] Custom documentation components
   - [x] Note
   - [ ] Do/Dont
